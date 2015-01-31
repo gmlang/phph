@@ -1,0 +1,27 @@
+#' Run some descriptive analysis.
+#' 
+#' @return summary stats and a boxplot
+#' @export
+run_descriptive = function() {        
+        head1 = c("rowname", names(summ_convars))
+        tb1 = cbind(summ_convars[[1]], summ_convars[[2]][,2])
+        names(tb1) = c("rowname", "TTOBRC", "AGE")
+        row.names(tb1) = NULL
+        
+        head2 = c("rowname", names(summ_catvars)[1])
+        tb2 = summ_catvars[[1]]
+        names(tb2) = c("rowname", "STATUS")
+        
+        head3 = c("rowname", names(summ_catvars)[2])
+        tb3 = summ_catvars[[2]]
+        names(tb3) = c("rowname", "RT")
+        
+        # make output data structure
+        tbls = data.frame(tab = "Summary Statistics", name = c("", "", ""))
+        tbls$header = list(head1, head2, head3)
+        tbls$value = list(tb1, tb2, tb3)
+        
+        # collect output
+        out = list(tables=tbls)  
+        out
+}
