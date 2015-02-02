@@ -24,6 +24,8 @@ for (j in 1:ncol(dat)) {
                 
 }
 
-devtools::use_data(summ_convars, summ_catvars, internal=TRUE, overwrite=TRUE)
+summ_stats = summary(dat)
+devtools::use_data(summ_convars, summ_catvars, summ_stats, 
+                   internal=TRUE, overwrite=TRUE)
 
 

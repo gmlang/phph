@@ -11,6 +11,7 @@ opencpu$start(2498)
 
 # run these lines at terminal
 curl http://localhost:2498/ocpu/library/phph/R/run_descriptive/json -d ''
+curl http://localhost:2498/ocpu/library/phph/R/run_descriptive2 -d ''
 
 # retrieve the plot
 http://localhost:2498/ocpu/tmp/x00259eba2e/R/.val
