@@ -12,11 +12,12 @@ opencpu$start(2498)
 # run these lines at terminal
 curl http://localhost:2498/ocpu/library/phph/R/run_descriptive/json -d ''
 curl http://localhost:2498/ocpu/library/phph/R/run_descriptive2 -d ''
+curl http://localhost:2498/ocpu/library/phph/R/run_descriptive -d ''
 
 # retrieve the plot
 http://localhost:2498/ocpu/tmp/x00259eba2e/R/.val
 http://localhost:2498/ocpu/tmp/x0dc57f94f3/info
-http://localhost:2498/ocpu/tmp/x0bde70d231/stdout
-http://localhost:2498/ocpu/tmp/x0b12271750/graphics/1/png
+http://localhost:2498/ocpu/tmp/x0be2e61d94/stdout
+http://localhost:2498/ocpu/tmp/x0bcab86575/graphics/1/png
 http://localhost:2498/ocpu/tmp/x0b12271750/graphics/1/pdf
 http://localhost:2498/ocpu/tmp/x09ee972d26/files/plt.png
