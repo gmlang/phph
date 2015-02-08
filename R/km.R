@@ -26,7 +26,7 @@ km = function() {
         
         # create data.frame to hold message and run time
         stats = data.frame(tab="Kaplan Meier", msg="success", 
-                           seconds=runtime)
+                           seconds=runtime, has_stdout=FALSE)
         
         # collect into out
         out = list(plots=plts, status=stats)                
