@@ -8,4 +8,5 @@ License: MIT
 LazyData: true
 Imports: survival,
     splines,
-    ggplot2
+    ggplot2,
+    nltm
