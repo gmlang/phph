@@ -1,11 +1,12 @@
 #' Run some descriptive analysis.
 #' 
-#' @return summary stats
+#' @return print out summary stats
 #' @export
 run_descriptive2 = function() {
         t0 = proc.time()
         
-        print(summ_stats)
+        summ_printout = capture.output(print(summ_stats))
+        printout = data.frame(tab="test", stdout=summ_printout)
         
         # calculate total time
         dur = proc.time() - t0
@@ -17,6 +18,8 @@ run_descriptive2 = function() {
                            seconds=runtime, has_stdout=TRUE)
         
         # collect into out
-        out = list(status=stats)                
+        out = list(status=stats, stdout=printout)                
         return(out)
 }
+
+

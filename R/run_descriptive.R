@@ -29,7 +29,8 @@ run_descriptive = function() {
         print(p)
         
         # create data.frame to hold plots title and index
-        plts = data.frame(tab="Descriptive Analysis", title="chart1", n=1)
+        plts = data.frame(tab="Descriptive Analysis", name="chart1", n=1,
+                          has_caption=FALSE)
         
         # calculate total time
         dur = proc.time() - t0

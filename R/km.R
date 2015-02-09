@@ -17,7 +17,8 @@ km = function() {
              cex.axis = 1, cex.lab = 1, main = "Kaplan-Meier curves")
         
         # create data.frame to hold plots title and index
-        plts = data.frame(tab="Kaplan Meier", title="chart1", n=1, caption=txt)
+        plts = data.frame(tab="Kaplan Meier", name="chart1", n=1, 
+                          has_caption=TRUE, caption=txt)
         
         # calculate total time
         dur = proc.time() - t0
