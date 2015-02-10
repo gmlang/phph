@@ -7,7 +7,7 @@
 run_descriptive2()
 }
 \value{
-summary stats
+print out summary stats
 }
 \description{
 Run some descriptive analysis.

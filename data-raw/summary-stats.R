@@ -1,3 +1,6 @@
+proj_path = file.path(Sys.getenv("HOME"), "openCPU/apps")
+setwd(file.path(proj_path, "phph"))
+
 load("data/dat.rda")
 dat$STATUS = as.factor(ifelse(dat$STATUS==1, "breast cancer", 
                               "no breast cancer"))

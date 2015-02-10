@@ -14,8 +14,10 @@ curl http://localhost:2498/ocpu/library/phph/R/run_descriptive/json -d ''
 curl http://localhost:2498/ocpu/library/phph/R/run_descriptive2/json -d ''
 curl http://localhost:2498/ocpu/library/phph/R/run_descriptive2 -d ''
 curl http://localhost:2498/ocpu/library/phph/R/run_descriptive -d ''
-
 curl http://localhost:2498/ocpu/library/phph/R/km -d ''
+curl http://localhost:2498/ocpu/library/phph/R/cox/json -d ''
+
+
 
 # retrieve the plot
 http://localhost:2498/ocpu/tmp/x064662d52f/R/.val
