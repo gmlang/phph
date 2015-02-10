@@ -20,7 +20,7 @@ run_descriptive = function() {
         
         # make output data structure
         tbls = data.frame(tab = "Descriptive Analysis", name = c("", "", ""),
-                          n=3, has_caption=FALSE, caption=NULL)
+                          n=3, has_caption=FALSE, caption="")
         tbls$header = list(head1, head2, head3)
         tbls$value = list(tb1, tb2, tb3)
         
@@ -31,11 +31,11 @@ run_descriptive = function() {
         
         # create data.frame to hold plots title and index
         plts = data.frame(tab="Descriptive Analysis", name="", n=1,
-                          has_caption=FALSE, caption=NULL)
+                          has_caption=FALSE, caption="")
         
         # create data.frame to hold print outs
         prnts = data.frame(tab="Kaplan Meier", name="", n=0, has_caption=FALSE,
-                           caption=NULL)
+                           caption="")
         
         # calculate total time
         dur = proc.time() - t0

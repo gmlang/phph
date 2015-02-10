@@ -14,8 +14,8 @@ run_descriptive2 = function() {
         runtime = dur[3]
         
         # create data.frame to hold print outs
-        prnts = data.frame(tab="Cox", name="", n=0, has_caption=FALSE,
-                           caption=NULL)
+        prnts = data.frame(tab="Cox", name="", n=0, has_caption=FALSE, 
+                           caption="")
         
         # create data.frame to hold message and run time
         stats = data.frame(tab="test", msg="success", seconds=runtime)

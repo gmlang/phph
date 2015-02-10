@@ -14,7 +14,7 @@ cox = function() {
         vars = c("coef", "exp(coef)", "Pr(>|z|)")
         
         head1 = c("rowname", "", vars)
-        tb1 = c(row.names(summ_cox$coef), summ_cox$coef[, vars])
+        tb1 = c(row.names(summ_cox$coef), round(summ_cox$coef[, vars], 3))
         row.names(tb1) = NULL
                 
         # make output data structure
@@ -54,7 +54,7 @@ cox = function() {
         
         # create data.frame to hold print outs
         prnts = data.frame(tab="Cox", name="", n=0, has_caption=FALSE,
-                           caption=NULL)
+                           caption="")
         
         # calculate total time
         dur = proc.time() - t0

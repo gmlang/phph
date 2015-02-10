@@ -20,7 +20,7 @@ km = function() {
         
         # create data.frame to hold print outs
         prnts = data.frame(tab="Kaplan Meier", name="", n=0, has_caption=FALSE,
-                           caption=NULL)
+                           caption="")
         
         # calculate total time
         dur = proc.time() - t0
