@@ -13,16 +13,17 @@ cox = function() {
         summ_cox = summary(cox)
         vars = c("coef", "exp(coef)", "Pr(>|z|)")
         
-        head1 = c("rowname", "", vars)
+        head1 = c("rowname", vars)
         tb1 = c(row.names(summ_cox$coef), round(summ_cox$coef[, vars], 3))
         row.names(tb1) = NULL
                 
         # make output data structure
         tbl_cap = "The parameter estimate of the treatment variable has a p-value greater than 0.05, indicating the effects of radiotherapy are not statistically significant under the Cox model."
         tbls = data.frame(tab = "Cox", name = "Model Parameter Estimates", n=1, 
-                          has_caption=TRUE, caption=tbl_cap)
+                          has_caption=TRUE)
         tbls$header = list(head1)
         tbls$value = list(tb1)
+        tbls$caption = list(tbl_cap)
         
         # calculate predicted survival rates
         survcurve.cox.notreat = survival::survexp(~RT, data=radio, 
@@ -49,12 +50,12 @@ cox = function() {
         
         # create data.frame to hold plots title and index
         fig_cap = "This plot of KM vs the predicted survival curves of the Cox model shows the Cox model fits poorly to the data."
-        plts = data.frame(tab="Cox", name="", n=1, 
-                          has_caption=TRUE, caption=fig_cap)
+        plts = data.frame(tab="Cox", name="", n=1, has_caption=TRUE)
+        plts$caption = list(fig_cap)
         
         # create data.frame to hold print outs
-        prnts = data.frame(tab="Cox", name="", n=0, has_caption=FALSE,
-                           caption="")
+        prnts = data.frame(tab="Cox", name="", n=0, has_caption=FALSE)
+        prnts$caption = list(NULL)
         
         # calculate total time
         dur = proc.time() - t0

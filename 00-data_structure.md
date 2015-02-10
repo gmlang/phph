@@ -1,8 +1,8 @@
 # data structure
 * status: tab, msg, seconds 
-* tables: tab, name, n, has_caption, caption
+* tables: tab, name, n, has_caption, caption, header, value
 * plots: tab, name, n, has_caption, caption
-* prints: tab, name, n, has_caption, caption
+* prints: tab, name, n, has_caption, caption, stdout
 
 
 when no values, the following fileds assume these values
@@ -11,4 +11,7 @@ when no values, the following fileds assume these values
 * msg = ""
 * name = ""
 * n = 0
-* caption = ""
+* caption = NULL (or {} in json)
+* header = NULL (or {} in json)
+* value = NULL (or {} in json)
+* stdout = NULL (or {} in json)

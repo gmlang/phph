@@ -1,7 +1,12 @@
 proj_path = file.path(Sys.getenv("HOME"), "openCPU/apps")
 setwd(file.path(proj_path, "phph"))
-
 load("data/dat.rda")
+
+# split data
+radio = subset(dat, RT=="Radiotherapy") 
+noradio = subset(dat, RT=="No radiotherapy")
+
+# get summary stats
 dat$STATUS = as.factor(ifelse(dat$STATUS==1, "breast cancer", 
                               "no breast cancer"))
 summ_convars = list()
@@ -28,7 +33,5 @@ for (j in 1:ncol(dat)) {
 }
 
 summ_stats = summary(dat)
-devtools::use_data(summ_convars, summ_catvars, summ_stats, 
+devtools::use_data(summ_convars, summ_catvars, summ_stats, radio, noradio, 
                    internal=TRUE, overwrite=TRUE)
-
-

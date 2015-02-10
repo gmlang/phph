@@ -15,12 +15,18 @@ km = function() {
         
         # create data.frame to hold plots title and index
         txt = "The Kaplan-Meier curves show that patients who received radiotherapy have a higher proportion of NOT developing breast cancer in the short term than patients who didn't receive radiotherapy, but have a much higher proportion of developing breast cancer in the long term. This leads to a hypothesis: radiotherapy decreases the risk of breast cancer in the short term, but increases its risk in the long term."
-        plts = data.frame(tab="Kaplan Meier", name="", n=1, 
-                          has_caption=TRUE, caption=txt)
+        plts = data.frame(tab="Kaplan Meier", name="", n=1, has_caption=TRUE)
+        plts$caption = list(txt)
+        
+        # create data.frame to hold tables
+        tbls = data.frame(tab="Kaplan Meier", name="", n=0, has_caption=FALSE)
+        tbls$header = list(NULL)
+        tbls$value = list(NULL)
+        tbls$caption = list(NULL)
         
         # create data.frame to hold print outs
-        prnts = data.frame(tab="Kaplan Meier", name="", n=0, has_caption=FALSE,
-                           caption="")
+        prnts = data.frame(tab="Kaplan Meier", name="", n=0, has_caption=FALSE)
+        prnts$caption = list(NULL)
         
         # calculate total time
         dur = proc.time() - t0
@@ -31,6 +37,6 @@ km = function() {
         stats = data.frame(tab="Kaplan Meier", msg="success", seconds=runtime)
         
         # collect into out
-        out = list(status=stats, plots=plts, prints=prnts)                
+        out = list(status=stats, tables=tbls, plots=plts, prints=prnts)
         return(out)
 }
