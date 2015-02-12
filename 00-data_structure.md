@@ -11,7 +11,7 @@ when no values, the following fileds assume these values
 * msg = ""
 * name = ""
 * n = 0
-* caption = NULL (or {} in json)
+* caption = ""
+* stdout = ""
 * header = NULL (or {} in json)
 * value = NULL (or {} in json)
-* stdout = NULL (or {} in json)

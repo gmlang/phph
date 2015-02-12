@@ -20,10 +20,9 @@ run_descriptive = function() {
         
         # make output data structure
         tbls = data.frame(tab = "Descriptive Analysis", name = c("", "", ""),
-                          n=3, has_caption=FALSE)
+                          has_caption = c(F, F, F), caption = c("", "", ""))
         tbls$header = list(head1, head2, head3)
         tbls$value = list(tb1, tb2, tb3)
-        tbls$caption = list(NULL, NULL, NULL)
         
         # make boxplot
         f = mk_box_plt(dat)
@@ -32,15 +31,8 @@ run_descriptive = function() {
         
         # create data.frame to hold plots title and index
         plts = data.frame(tab="Descriptive Analysis", name="", n=1, 
-                          has_caption=FALSE)
-        plts$caption = list(NULL)
-        
-        # create data.frame to hold print outs
-        prnts = data.frame(tab="Descriptive Analysis", name="", n=0, 
-                           has_caption=FALSE)
-        prnts$stdout = list(NULL)
-        prnts$caption = list(NULL)
-        
+                          has_caption=FALSE, caption="")
+                
         # calculate total time
         dur = proc.time() - t0
         names(dur) = NULL
@@ -51,6 +43,6 @@ run_descriptive = function() {
                            seconds=runtime)
                 
         # collect into out
-        out = list(status=stats, tables=tbls, plots=plts, prints=prnts)                
+        out = list(status=stats, tables=tbls, plots=plts, prints=NULL)                
         return(out)        
 }
