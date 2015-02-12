@@ -5,43 +5,30 @@
 po = function() {
         t0 = proc.time()
         
-        po <- nltm(Surv(TTOBRC, STATUS)~RT, data=dat, nlt.model="PO")
-        betas = po$coef # we only have one beta here since po has one covariate RT
-        # Survival probabilities for (no radiotherapy) and (radiotherapy)
-        po.baselineSF = cumprod(po$surv)
-        po.noradioSF = 1/(1-log(po.baselineSF))
-        po.radioSF = exp(betas)/(exp(betas)-log(po.baselineSF))
-        eventTimes = sort(unique(dat$TTOBRC[dat$STATUS==1]))
-        
-        lines(eventTimes,po.noradioSF,type='s', lty=1, lwd=3, ylim=c(0.86,1))
-        lines(eventTimes,po.radioSF,type='s', lty=2, lwd=3, ylim=c(0.86,1))
-        legend("topright", legend=c("KM: no radiotherapy", "KM: radiotherapy", "PO: no radiotherapy", "PO: radiotherapy"),lty=c(1,1,1,2), col=c("red","blue","black","black")) 
-        
-        # run cox model
-        po = survival::coxph(survival::Surv(TTOBRC, STATUS) ~ RT,  
-                              data=dat, method="breslow")
-        
+        # run po model
+        po = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, nlt.model="PO")
+
         # extract beta hats and collect into the correct format for output
-        summ_cox = summary(cox)
-        vars = c("coef", "exp(coef)", "Pr(>|z|)")
+        summ = summary(po)
+        vars = c("coef", "exp(coef)", "p")
         
         head1 = c("rowname", vars)
-        tb1 = c(row.names(summ_cox$coef), round(summ_cox$coef[, vars], 3))
+        tb1 = c(row.names(summ$coef), round(summ$coef[, vars], 3))
         row.names(tb1) = NULL
         
         # make output data structure
-        tbl_cap = "The parameter estimate of the treatment variable has a p-value greater than 0.05, indicating the effects of radiotherapy are not statistically significant under the Cox model."
-        tbls = data.frame(tab = "Cox", name = "Model Parameter Estimates", n=1, 
-                          has_caption=TRUE)
+        tbl_cap = "The parameter estimate of the treatment variable has a p-value greater than 0.05, indicating the effects of radiotherapy are not statistically significant under the PO model."
+        tbls = data.frame(tab="PO", name="Model Parameter Estimates",
+                          has_caption=TRUE, caption=tbl_cap)
         tbls$header = list(head1)
         tbls$value = list(tb1)
-        tbls$caption = list(tbl_cap)
-        
-        # calculate predicted survival rates
-        survcurve.cox.notreat = survival::survexp(~RT, data=radio, 
-                                                  ratetable=cox, cohort=TRUE)
-        survcurve.cox.treat = survival::survexp(~RT, data=noradio, 
-                                                ratetable=cox,  cohort=TRUE)
+
+        # calculate survival probabilities for (no radiotherapy) and (radiotherapy)
+        po.baselineSF = cumprod(po$surv)
+        po.noradioSF = 1/(1-log(po.baselineSF))
+        betas = po$coef
+        po.radioSF = exp(betas)/(exp(betas)-log(po.baselineSF))
+        eventTimes = sort(unique(dat$TTOBRC[dat$STATUS==1]))        
         
         # generate KM plot with survival curves overlayed 
         km = survival::survfit(survival::Surv(TTOBRC, STATUS) ~ RT, data=dat, 
@@ -49,35 +36,28 @@ po = function() {
         plot(km, lty = c(1:1), col = c("red","blue"), ylim = c(0.86,1), 
              xlab = "Months to breast cancer occurence", 
              ylab = "Proportion of patients with breast cancer development", 
-             cex.axis = 1, cex.lab = 1, main = "KM vs. Cox Model Predicted Survival Curves")
+             cex.axis = 1, cex.lab = 1, main = "KM vs. PO Model Predicted Survival Curves")
         
-        lines(survcurve.cox.notreat, col="dark green", ylim=c(0.86,1), 
-              lty=1, lwd=3)
-        lines(survcurve.cox.treat, col="dark green", ylim=c(0.86,1), 
-              lty=2, lwd=3)
-        legend("topright", lty=c(1,1,1,2),
-               legend=c("KM: no radiotherapy", "KM: radiotherapy", 
-                        "Cox: no radiotherapy", "Cox: radiotherapy"), 
-               col=c("red","blue","dark green","dark green"))
-        
+        lines(eventTimes,po.noradioSF,type='s', lty=1, lwd=3, ylim=c(0.86,1))
+        lines(eventTimes,po.radioSF,type='s', lty=2, lwd=3, ylim=c(0.86,1))
+        legend("topright", legend=c("KM: no radiotherapy", "KM: radiotherapy", 
+                                    "PO: no radiotherapy", "PO: radiotherapy"),
+               lty=c(1,1,1,2), col=c("red","blue","black","black")) 
+
         # create data.frame to hold plots title and index
-        fig_cap = "This plot of KM vs the predicted survival curves of the Cox model shows the Cox model fits poorly to the data."
-        plts = data.frame(tab="Cox", name="", n=1, has_caption=TRUE)
-        plts$caption = list(fig_cap)
-        
-        # create data.frame to hold print outs
-        prnts = data.frame(tab="Cox", name="", n=0, has_caption=FALSE)
-        prnts$caption = list(NULL)
-        
+        fig_cap = "This plot of KM vs the predicted survival curves of the PO model shows the PO model fits poorly to the data."
+        plts = data.frame(tab="PO", name="", n=1, has_caption=TRUE,
+                          caption=fig_cap)
+                
         # calculate total time
         dur = proc.time() - t0
         names(dur) = NULL
         runtime = dur[3]
         
         # create data.frame to hold message and run time
-        stats = data.frame(tab="Cox", msg="success", seconds=runtime)
+        stats = data.frame(tab="PO", msg="success", seconds=runtime)
         
         # collect into out
-        out = list(status=stats, tables=tbls, plots=plts, prints=prnts)                
+        out = list(status=stats, tables=tbls, plots=plts, prints=NULL)                
         return(out)        
 }
