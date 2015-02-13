@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="opencpuDemo">
+<head lang="en">
+    <title>Effect of Radiotherapy on Time to Breast Cancer</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- Set "base" for the app root URL -->
+    <!--<base href="/opencpu-phph/inst/www/">-->
+
+    <!-- ocpu library -->
+    <script src="asset/lib/opencpu/jquery-1.11.1.min.js"> </script>
+    <script src="asset/lib/opencpu/opencpu-0.5.js"> </script>
+
+    <!-- bootstrap framework -->
+    <link href="asset/lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <script src="asset/lib/bootstrap/js/bootstrap.js"> </script>
+
+    <!-- angular JS -->
+    <script src="asset/lib/angular/angular.js"></script>
+    <script src="asset/lib/angular/angular-route.js"></script>
+    <script src="asset/lib/angular/angular-md5.js"></script>
+
+    <!-- app JS and CSS -->
+    <link href="asset/css/app.css" rel="stylesheet" media="screen">
+
+    <script src="app/app.module.js"></script>
+    <script src="app/app.route.js"></script>
+    <script src="app/app.data.js"></script>
+
+    <script src="app/navHeader/navHeader.module.js"></script>
+    <script src="app/navHeader/navHeader.controller.js"></script>
+    <script src="app/navHeader/navHeader.directive.js"></script>
+
+    <script src="app/opencpuGate/opencpuGate.module.js"></script>
+    <script src="app/opencpuGate/opencpuGate.directive.js"></script>
+    <script src="app/opencpuGate/opencpuGate.controller.js"></script>
+    <script src="app/opencpuGate/opencpuGate.service.js"></script>
+
+    <script src="app/page/page.controller.js"></script>
+
+</head>
+<body>
+
+    <!-- Header Nav Bar -->
+    <nav-header></nav-header>
+
+    <!-- Main container -->
+    <div class="container-fluid" id="content-container">
+        <div ng-view></div>
+    </div>
+
+</body>
+</html>

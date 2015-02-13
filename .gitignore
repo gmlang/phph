@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+### R template
+# History files
+.Rhistory
+.Rapp.history
+
+# Example code in package build process
+*-Ex.R
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+
