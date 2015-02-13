@@ -22,6 +22,7 @@ run_descriptive2 = function() {
         stats = data.frame(tab="test", msg="success", seconds=runtime)
         
         # collect into out
-        out = list(status=stats, tables=NULL, plots=NULL, prints=prnts)
+        out = list(status=stats, tables=list(NULL), plots=list(NULL), 
+                   prints=prnts)
         return(out)
 }
