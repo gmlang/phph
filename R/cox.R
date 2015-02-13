@@ -63,6 +63,6 @@ cox = function() {
         stats = data.frame(tab="Cox", msg="success", seconds=runtime)
         
         # collect into out
-        out = list(status=stats, tables=tbls, plots=plts, prints=list(NULL))
+        out = list(status=stats, tables=tbls, plots=plts, prints=list())
         return(out)        
 }

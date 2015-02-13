@@ -27,7 +27,6 @@ km = function() {
         stats = data.frame(tab="Kaplan Meier", msg="success", seconds=runtime)
         
         # collect into out
-        out = list(status=stats, tables=list(NULL), plots=plts, 
-                   prints=list(NULL))
+        out = list(status=stats, tables=list(), plots=plts, prints=list())
         return(out)
 }
