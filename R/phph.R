@@ -21,7 +21,7 @@ phph = function() {
         row.names(tb1) = NULL
         
         # make output data structure
-        tbl_cap = "The parameter estimate of the treatment variable has a p-value less than 0.05, indicating the effects of radiotherapy are statistically significant under the phph cure model."
+        tbl_cap = "The p-values are all exceedingly small, indicating the beta estimates are all statistically significant. In particular, the significant beta estimate for radiotherapy in the short term predictor implies radiotherapy has a negative short term effect; the significant beta estimate for radiotherapy in the long term predictor implies radiotherapy has a positive effect on the breast cancer occurrence rates in the long term."
         tbls = data.frame(tab="phph", name="Model Parameter Estimates",
                           has_caption=TRUE, caption=tbl_cap)
         tbls$header = list(head1)
@@ -62,7 +62,7 @@ phph = function() {
                lty=c(1,1,1,2), col=c("red","blue","black","black"))         
         
         # create data.frame to hold plots title and index
-        fig_cap = "This plot of KM vs the predicted survival curves of the phph cure model shows the phph cure model fits very well to the data."
+        fig_cap = "We plot the observed KM curves against the predicted survival curves under the PHPHC model, and it shows the PHPHC model fits the data well. This is because the phph cure model includes a term that captures the short term effect explicitly."
         plts = data.frame(tab="phph", name="", n=1, has_caption=TRUE,
                           caption=fig_cap)
         

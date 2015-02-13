@@ -50,7 +50,7 @@ cox = function() {
                col=c("red","blue","dark green","dark green"))
         
         # create data.frame to hold plots title and index
-        fig_cap = "This plot of KM vs the predicted survival curves of the Cox model shows the Cox model fits poorly to the data."
+        fig_cap = "This plot of KM vs the predicted survival curves of the Cox model shows the Cox model fits poorly to the data. It fails to describe the data because it doesn't take into the consideration of the fact that short term and long term effects of a treatment on the hazard can be in opposite directions."
         plts = data.frame(tab="Cox", name="", n=1, has_caption=TRUE,
                           caption=fig_cap)
                 

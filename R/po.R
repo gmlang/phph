@@ -47,7 +47,7 @@ po = function() {
                lty=c(1,1,1,2), col=c("red","blue","black","black")) 
 
         # create data.frame to hold plots title and index
-        fig_cap = "This plot of KM vs the predicted survival curves of the PO model shows the PO model fits poorly to the data."
+        fig_cap = "This plot of KM vs the predicted survival curves of the PO model shows the PO model fits poorly to the data. It fails to describe the data because it doesn't take into the consideration of the fact that short term and long term effects of a treatment on the hazard can be in opposite directions."
         plts = data.frame(tab="PO", name="", n=1, has_caption=TRUE,
                           caption=fig_cap)
                 
