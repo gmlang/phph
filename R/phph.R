@@ -13,7 +13,11 @@ phph = function() {
         vars = c("coef", "exp(coef)", "p")
         
         head1 = c("rowname", vars)
-        tb1 = c(row.names(summ$coef), round(summ$coef[, vars], 3))
+        row1 = c(row.names(summ$coef)[1], round(summ$coef[1, vars], 3))
+        row2 = c(row.names(summ$coef)[2], round(summ$coef[2, vars], 3))
+        row3 = c(row.names(summ$coef)[3], round(summ$coef[3, vars], 3))
+        tb1 = data.frame(rbind(row1, row2, row3))
+        names(tb1) = head1
         row.names(tb1) = NULL
         
         # make output data structure

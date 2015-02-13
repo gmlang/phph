@@ -14,6 +14,8 @@ po = function() {
         
         head1 = c("rowname", vars)
         tb1 = c(row.names(summ$coef), round(summ$coef[, vars], 3))
+        tb1 = data.frame(rbind(tb1))
+        names(tb1) = head1
         row.names(tb1) = NULL
         
         # make output data structure
