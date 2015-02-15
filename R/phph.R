@@ -12,7 +12,7 @@ phph = function() {
         summ = summary(phph)
         vars = c("coef", "exp(coef)", "p")
         
-        head1 = c("rowname", vars)
+        head1 = c("predictor", vars)
         row1 = c(row.names(summ$coef)[1], round(summ$coef[1, vars], 3))
         row2 = c(row.names(summ$coef)[2], round(summ$coef[2, vars], 3))
         row3 = c(row.names(summ$coef)[3], round(summ$coef[3, vars], 3))

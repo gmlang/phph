@@ -13,7 +13,7 @@ cox = function() {
         summ_cox = summary(cox)
         vars = c("coef", "exp(coef)", "Pr(>|z|)")
         
-        head1 = c("rowname", vars)
+        head1 = c("predictor", vars)
         tb1 = c(row.names(summ_cox$coef), round(summ_cox$coef[, vars], 3))
         tb1 = data.frame(rbind(tb1))
         names(tb1) = head1
