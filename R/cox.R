@@ -22,7 +22,7 @@ cox = function() {
         # make output data structure
         tbl_cap = "The parameter estimate of the treatment variable has a p-value greater than 0.05, indicating the effects of radiotherapy are not statistically significant under the Cox model."
         tbls = data.frame(tab="Cox", name="Model Parameter Estimates", 
-                          has_caption=TRUE, caption="")
+                          has_caption=TRUE, caption=tbl_cap)
         tbls$header = list(head1)
         tbls$value = list(tb1)
         
