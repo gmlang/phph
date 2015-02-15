@@ -102,4 +102,32 @@ opencpuGateModule.controller('opencpuGateController', ['$scope', 'opencpuGateSer
         return tableObj.value;
     }
 
+    /**
+     * Get an "ordered" row array according to the "header" array.
+     *
+     * For each row, it has a corresponding "object" inside the "table row array".
+     * In order to help display each cell by using "ng-repeat", we need to build an array which has
+     * the correct order.
+     *
+     * @param tableRowObj   The table object that includes the table cell values (in key-value paris)
+     *
+     * @return An array of table cell values with the order by the header.
+     */
+    $scope.getTableRow = function(tableRowObj, tableObj) {
+
+        var headerArray = $scope.getTableHeaderArray(tableObj);
+        var valueArray = [];
+
+        if(tableObj == null) {
+            return null;
+        }
+
+        $.each(headerArray, function(idx, header) {
+            var value = tableRowObj[header];
+            valueArray.push(value);
+        });
+
+        return valueArray;
+    }
+
 }]);
