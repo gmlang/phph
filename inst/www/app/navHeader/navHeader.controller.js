@@ -6,7 +6,7 @@
  */
 
 navHeader.controller('navHeaderController', ['$scope', '$location', function($scope, $location){
-    $scope.appHeaderName = "OpenCPU-Demo";
+    $scope.appHeaderName = "Survival Analysis App Demo";
     $scope.appHeaderMenus = dataHeaderMenu;
 
     /**

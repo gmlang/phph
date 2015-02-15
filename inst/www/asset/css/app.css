@@ -1,3 +1,7 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue","Arial", "Georgia", "Baskerville";
+}
+
 .page-header {
     margin-top: 10px;
 }
@@ -10,8 +14,9 @@
     margin-top: 0px;
 }
 
-blockquote {
+.opencpu-caption {
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .ads-div {
