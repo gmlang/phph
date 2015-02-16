@@ -34,17 +34,18 @@ po = function() {
         
         # generate KM plot with survival curves overlayed 
         km = survival::survfit(survival::Surv(TTOBRC, STATUS) ~ RT, data=dat, 
-                               type="kaplan-meier")
+                               type="kaplan-meier")        
         plot(km, lty = c(1:1), col = c("red","blue"), ylim = c(0.86,1), 
-             xlab = "Months to breast cancer occurence", 
-             ylab = "Proportion of patients with breast cancer development", 
-             cex.axis = 1, cex.lab = 1, main = "KM vs. PO Model Predicted Survival Curves")
+             xlab = "Time to breast cancer occurence (in months)", 
+             ylab = "Proportion of breast cancer occurrences", 
+             main = "KM vs. PO Model Predicted Survival Curves",
+             cex.axis = 1.5, cex.lab = 1.5, cex.main=2)
         
         lines(eventTimes,po.noradioSF,type='s', lty=1, lwd=3, ylim=c(0.86,1))
         lines(eventTimes,po.radioSF,type='s', lty=2, lwd=3, ylim=c(0.86,1))
         legend("topright", legend=c("KM: no radiotherapy", "KM: radiotherapy", 
                                     "PO: no radiotherapy", "PO: radiotherapy"),
-               lty=c(1,1,1,2), col=c("red","blue","black","black")) 
+               lty=c(1,1,1,2), text.font=2, col=c("red","blue","black","black")) 
 
         # create data.frame to hold plots title and index
         fig_cap = "This plot of KM vs the predicted survival curves of the PO model shows the PO model fits poorly to the data. It fails to describe the data because it doesn't take into the consideration of the fact that short term and long term effects of a treatment on the hazard can be in opposite directions."
