@@ -33,5 +33,8 @@ for (j in 1:ncol(dat)) {
 }
 
 summ_stats = summary(dat)
-devtools::use_data(summ_convars, summ_catvars, summ_stats, radio, noradio, 
-                   internal=TRUE, overwrite=TRUE)
+summ_printout = capture.output(print(summ_stats))
+summ_printout = paste(summ_printout, collapse="\n")
+
+devtools::use_data(summ_convars, summ_catvars, summ_printout, 
+                   radio, noradio, internal=TRUE, overwrite=TRUE)

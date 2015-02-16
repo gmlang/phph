@@ -5,9 +5,6 @@
 run_descriptive2 = function() {
         t0 = proc.time()
         
-        summ_printout = capture.output(print(summ_stats))
-        summ_printout = paste(summ_printout, collapse="\n")
-        
         # create data.frame to hold print outs
         prnts = data.frame(tab="test", name="summary of the variables",
                            has_caption=FALSE, caption="", 
