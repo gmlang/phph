@@ -14,6 +14,11 @@ trim = function (x) gsub("^\\s+|\\s+$", "", x)
 #'                         on y-axis. Default is FALSE                         
 mk_box_plt = function(df) {
         function(xvar, yvar, degree=0, vpos=0, log_y=FALSE, ylab_str="") {
+                axis.txt = ggplot2::element_text(angle = degree, size=14, 
+                                                 family="sans", face="bold")
+                axis.title = ggplot2::element_text(size=18, family="sans", 
+                                                   vjust=2)
+                
                 p = ggplot2::ggplot(df, ggplot2::aes_string(x = xvar, y = yvar, 
                                                             fill = xvar)) + 
                         ggplot2::geom_boxplot() + 
@@ -24,7 +29,10 @@ mk_box_plt = function(df) {
                         ggplot2::stat_summary(fun.data = function(x) 
                                 c(y = max(x) + vpos, label = length(x)), 
                                 geom = "text", size = 5) + 
-                        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = degree))
+                        ggplot2::theme(axis.text.x = axis.txt,
+                                       axis.text.y = axis.txt,
+                                       axis.title.x = axis.title,
+                                       axis.title.y = axis.title)
                 if (log_y)
                         p = p + ggplot2::scale_y_log10()
                 p

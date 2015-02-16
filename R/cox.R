@@ -36,15 +36,16 @@ cox = function() {
         km = survival::survfit(survival::Surv(TTOBRC, STATUS) ~ RT, data=dat, 
                                type="kaplan-meier")
         plot(km, lty = c(1:1), col = c("red","blue"), ylim = c(0.86,1), 
-             xlab = "Months to breast cancer occurence", 
-             ylab = "Proportion of patients with breast cancer development", 
-             cex.axis = 1, cex.lab = 1, main = "KM vs. Cox Model Predicted Survival Curves")
+             xlab = "Time to breast cancer occurence (in months)", 
+             ylab = "Proportion of breast cancer occurrences", 
+             main = "KM vs. Cox Model Predicted Survival Curves",
+             cex.axis = 1.5, cex.lab = 1.5, cex.main=2)
         
         lines(survcurve.cox.notreat, col="dark green", ylim=c(0.86,1), 
               lty=1, lwd=3)
         lines(survcurve.cox.treat, col="dark green", ylim=c(0.86,1), 
               lty=2, lwd=3)
-        legend("topright", lty=c(1,1,1,2),
+        legend("topright", lty=c(1,1,1,2), text.font=2,
                legend=c("KM: no radiotherapy", "KM: radiotherapy", 
                         "Cox: no radiotherapy", "Cox: radiotherapy"), 
                col=c("red","blue","dark green","dark green"))
