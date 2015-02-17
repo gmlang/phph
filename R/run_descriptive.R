@@ -6,7 +6,7 @@ run_descriptive = function() {
         t0 = proc.time()
         
         # create data.frame to hold print outs
-        prnts = data.frame(tab="test", name="summary of the variables",
+        prnts = data.frame(tab="Descriptive Analysis", name="Summary of the Variables",
                            has_caption=FALSE, caption="", stdout=summ_printout)
         
         # make boxplot
@@ -28,6 +28,6 @@ run_descriptive = function() {
                            seconds=runtime)
                 
         # collect into out
-        out = list(status=stats, tables=tbls, plots=plts, prints=prnts)
+        out = list(status=stats, tables=list(), plots=plts, prints=prnts)
         return(out)        
 }
