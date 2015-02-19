@@ -172,7 +172,6 @@ opencpuGateModule.factory('opencpuGateService', ['$q', 'md5', 'opencpuGateCachin
             // Loop into Plots array
             if (plotArray != null && plotArray.length > 0) {
 
-                // Loop into tables
                 $.each(plotArray, function(idx, plotObj) {
                     var plotTab = plotObj.tab;
 
@@ -184,7 +183,6 @@ opencpuGateModule.factory('opencpuGateService', ['$q', 'md5', 'opencpuGateCachin
             // Loop into Tables array
             if (tableArray != null && tableArray.length > 0) {
 
-                // Loop into tables
                 $.each(tableArray, function(idx, tableObj) {
                     var tableTab = tableObj.tab;
 
@@ -196,7 +194,6 @@ opencpuGateModule.factory('opencpuGateService', ['$q', 'md5', 'opencpuGateCachin
             // Loop into Prints array
             if (printArray != null && printArray.length > 0) {
 
-                // Loop into tables
                 $.each(printArray, function(idx, printObj) {
                     var printTab = printObj.tab;
 
@@ -301,10 +298,10 @@ opencpuGateModule.factory('opencpuGateService', ['$q', 'md5', 'opencpuGateCachin
             $.each(tabArray, function(idx, tabObj) {
                 if(tabObj.tabName == tabName) {
                     // insert the element obj here
-                    if(tabObj.table == null){
-                        tabObj.table = [];
+                    if(tabObj.print == null){
+                        tabObj.print = [];
                     }
-                    tabObj.table.push(printObj);
+                    tabObj.print.push(printObj);
 
                     added = true;
                     return false;
