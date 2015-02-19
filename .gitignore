@@ -15,4 +15,8 @@
 vignettes/*.html
 vignettes/*.pdf
 
+# npm modules
+node_modules
 
+# app dist folder
+dist
