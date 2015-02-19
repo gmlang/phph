@@ -32,7 +32,7 @@
 
         <div class="plot-div" ng-repeat="plot in getPlotArray(firstTabObj)">
             <h4 ng-show="plot.hasTitle">{{plot.name}}</h4>
-            <img  ng-src="{{getPlotFullUrl(plot)}}" />
+            <img class="img-responsive center-block" ng-src="{{getPlotFullUrl(plot)}}" />
             <div class="opencpu-caption"  ng-show="plot.has_caption">
                 <p>{{plot.caption}}</p>
             </div>
