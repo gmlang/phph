@@ -32,10 +32,6 @@ opencpuDemoApp.config([ '$routeProvider', '$locationProvider',
                 templateUrl: 'app/page/page-phph.html',
                 controller: 'pagePhphController'
             })
-            .when('/test', {
-                templateUrl: 'app/page/page-test.html',
-                controller: 'pageTestController'
-            })
             .otherwise({
                 redirectTo: '/'
             });

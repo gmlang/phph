@@ -31,9 +31,5 @@ var dataHeaderMenu = [
     {
         label: 'PHPH Cure Model',
         uri: '/phph'
-    },
-    {
-        label: 'Test',
-        uri: '/test'
     }
 ];
