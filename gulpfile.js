@@ -15,6 +15,9 @@
  *  - gulp-uglify - to minify the file
  *  - gulp-ng-annotate - Add angularjs dependency injection annotations with ng-annotate (https://www.npmjs.com/package/gulp-ng-annotate)
  *  - gulp-sourcemaps - Source map support for Gulp.js (https://www.npmjs.com/package/gulp-sourcemaps)
+ *
+ * For "clean" task, it also needs a Node plugin - "del"
+ *
  */
 
 //
@@ -111,8 +114,8 @@ gulp.task('app-js', ['base-clean'], function () {
     ])
         .pipe(sourcemaps.init())
             .pipe(concat('asset/js/app.js'))
-            //.pipe(ngAnnotate())
-            //.pipe(uglify())
+            .pipe(ngAnnotate())
+            .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(webappDist))
 })
