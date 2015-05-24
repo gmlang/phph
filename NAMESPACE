@@ -2,6 +2,7 @@
 
 export(cox)
 export(km)
+export(phph)
 export(po)
 export(run_descriptive)
 export(run_descriptive2)

@@ -5,6 +5,10 @@
 cox = function() {
         t0 = proc.time()
         
+        red = ezplot::palette("red")
+        blue = ezplot::palette("blue")
+        green = ezplot::palette("green")
+        
         # run cox model
         cox = survival::coxph(survival::Surv(TTOBRC, STATUS) ~ RT,  
                               data=dat, method="breslow")
@@ -35,20 +39,20 @@ cox = function() {
         # generate KM plot with survival curves overlayed 
         km = survival::survfit(survival::Surv(TTOBRC, STATUS) ~ RT, data=dat, 
                                type="kaplan-meier")
-        plot(km, lty = c(1:1), col = c("red","blue"), ylim = c(0.86,1), 
+        plot(km, lty=c(1, 1), lwd=c(3, 3), col=c(red, blue), ylim=c(0.86, 1), 
              xlab = "Time to breast cancer occurence (in months)", 
-             ylab = "Proportion of breast cancer occurrences", 
+             ylab = "Proportion of HD patients without breast cancer", 
              main = "KM vs. Cox Model Predicted Survival Curves",
              cex.axis = 1.5, cex.lab = 1.5, cex.main=2)
         
-        lines(survcurve.cox.notreat, col="dark green", ylim=c(0.86,1), 
+        lines(survcurve.cox.notreat, col=green, ylim=c(0.86,1), 
               lty=1, lwd=3)
-        lines(survcurve.cox.treat, col="dark green", ylim=c(0.86,1), 
+        lines(survcurve.cox.treat, col=green, ylim=c(0.86,1), 
               lty=2, lwd=3)
-        legend("topright", lty=c(1,1,1,2), text.font=2,
+        legend("topright", lty=c(1,1,1,2), lwd=rep(3, 4), text.font=2,
                legend=c("KM: no radiotherapy", "KM: radiotherapy", 
                         "Cox: no radiotherapy", "Cox: radiotherapy"), 
-               col=c("red","blue","dark green","dark green"))
+               col=c(red, blue, green, green))
         
         # create data.frame to hold plots title and index
         fig_cap = "This plot of KM vs the predicted survival curves of the Cox model shows the Cox model fits poorly to the data. It fails to describe the data because it doesn't take into the consideration of the fact that short term and long term effects of a treatment on the hazard can be in opposite directions."

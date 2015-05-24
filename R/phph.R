@@ -1,9 +1,13 @@
 #' Fit PHPH cure model
 #' 
 #' @return parameter estimates of the PHPH cure model and its survival curves
-#' @exphphrt
+#' @export
 phph = function() {
         t0 = proc.time()
+        
+        red = ezplot::palette("red")
+        blue = ezplot::palette("blue")
+        purple = ezplot::palette("purple")
         
         # run phph model
         phph = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, nlt.model="PHPHC")
@@ -50,17 +54,20 @@ phph = function() {
         # generate KM plot with survival curves overlayed 
         km = survival::survfit(survival::Surv(TTOBRC, STATUS) ~ RT, data=dat, 
                                type="kaplan-meier")        
-        plot(km, lty = c(1:1), col = c("red","blue"), ylim = c(0.86,1), 
+        plot(km, lty=c(1, 1), lwd=c(3,3), col=c(red, blue), ylim=c(0.86, 1), 
              xlab = "Time to breast cancer occurence (in months)", 
-             ylab = "Proportion of breast cancer occurrences", 
+             ylab = "Proportion of HD patients without breast cancer",
              main = "KM vs. PHPH Cure Model Predicted Survival Curves",
              cex.axis = 1.5, cex.lab = 1.5, cex.main=2)
         
-        lines(eventTimes, phph.noradioSF, type='s', lty=1, lwd=3, ylim=c(0.86,1))
-        lines(eventTimes ,phph.radioSF, type='s', lty=2, lwd=3, ylim=c(0.86,1))
+        lines(eventTimes, phph.noradioSF, type='s', lty=1, lwd=3, 
+              ylim=c(0.86,1), col=purple)
+        lines(eventTimes ,phph.radioSF, type='s', lty=2, lwd=3, 
+              ylim=c(0.86,1), col=purple)
         legend("topright", legend=c("KM: no radiotherapy", "KM: radiotherapy", 
                                     "PHPH: no radiotherapy", "PHPH: radiotherapy"),
-               lty=c(1,1,1,2), text.font=2, col=c("red","blue","black","black"))         
+               lty=c(1,1,1,2), lwd=rep(3,4), text.font=2, 
+               col=c(red, blue, purple, purple))         
         
         # create data.frame to hold plots title and index
         fig_cap = "We plot the observed KM curves against the predicted survival curves under the PHPHC model, and it shows the PHPHC model fits the data well. This is because the phph cure model includes a term that captures the short term effect explicitly."
