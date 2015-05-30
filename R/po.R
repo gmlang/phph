@@ -11,7 +11,8 @@ po = function() {
         yellow = ezplot::palette("yellow")
         
         # run po model
-        po = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, nlt.model="PO")
+        po = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, 
+                        nlt.model="PO")
 
         # extract beta hats and collect into the correct format for output
         summ = summary(po)
