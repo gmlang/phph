@@ -11,7 +11,8 @@ phph = function() {
         purple = ezplot::palette("purple")
         
         # run phph model
-        phph = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, nlt.model="PHPHC")
+        phph = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, 
+                          nlt.model="PHPHC")
         
         # extract beta hats and collect into the correct format for output
         summ = summary(phph)
