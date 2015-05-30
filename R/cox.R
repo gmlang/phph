@@ -5,6 +5,7 @@
 cox = function() {
         t0 = proc.time()
         
+        # get pleasant colors
         red = ezplot::palette("red")
         blue = ezplot::palette("blue")
         green = ezplot::palette("green")
