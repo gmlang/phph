@@ -15,7 +15,7 @@ run_descriptive = function() {
                 main = "Distribution of time (in months) to breast cancer occurrence",
                 ylab = "Time to Breast Cancer Occurrence (in Months)", 
                 legend=F)
-        p = web_dispaly(p)
+        p = web_display(p)
         print(p)
         
         # create data.frame to hold plots title and index
