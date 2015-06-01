@@ -11,7 +11,7 @@ run_descriptive = function() {
         
         # make boxplot
         plt = ezplot::mk_boxplot(dat)
-        p = f("RT", "TTOBRC", ylab="Time to Breast Cancer Occurrence", legend=F)
+        p = plt("RT", "TTOBRC", ylab="Time to Breast Cancer Occurrence", legend=F)
         print(p)
         
         # create data.frame to hold plots title and index
