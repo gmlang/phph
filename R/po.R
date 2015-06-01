@@ -53,7 +53,7 @@ po = function() {
               ylim=c(0.86,1))
         legend("topright", legend=c("KM: no radiotherapy", "KM: radiotherapy", 
                                     "PO: no radiotherapy", "PO: radiotherapy"),
-               lty=c(1,1,1,2), lwd=rep(3, 4), text.font=2, 
+               lty=c(1, 1, 1, 2), lwd=rep(3, 4), text.font=2, 
                col=c(red, blue, yellow, yellow)) 
 
         # create data.frame to hold plots title and index
