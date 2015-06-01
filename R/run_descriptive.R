@@ -10,8 +10,8 @@ run_descriptive = function() {
                            has_caption=FALSE, caption="", stdout=summ_printout)
         
         # make boxplot
-        f = mk_box_plt(dat)
-        p = f("RT", "TTOBRC", ylab_str="Time to Breast Cancer Occurrence")
+        plt = ezplot::mk_boxplot(dat)
+        p = f("RT", "TTOBRC", ylab="Time to Breast Cancer Occurrence", legend=F)
         print(p)
         
         # create data.frame to hold plots title and index
