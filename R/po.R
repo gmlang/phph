@@ -6,9 +6,9 @@ po = function() {
         t0 = proc.time()
         
         # get pleasant colors
-        red = ezplot::palette("red")
-        blue = ezplot::palette("blue")
-        yellow = ezplot::palette("yellow")
+        red = ezplot::cb_color("vermilion")
+        blue = ezplot::cb_color("blue")
+        yellow = ezplot::cb_color("yellow")
         
         # run po model
         po = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, 

@@ -20,3 +20,4 @@ node_modules
 
 # app dist folder
 dist
+.Rproj.user

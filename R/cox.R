@@ -6,9 +6,9 @@ cox = function() {
         t0 = proc.time()
         
         # get pleasant colors
-        red = ezplot::palette("red")
-        blue = ezplot::palette("blue")
-        green = ezplot::palette("green")
+        red = ezplot::cb_color("vermilion")
+        blue = ezplot::cb_color("blue")
+        green = ezplot::cb_color("bluish_green")
         
         # run cox model
         cox = survival::coxph(survival::Surv(TTOBRC, STATUS) ~ RT,  

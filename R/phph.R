@@ -6,9 +6,9 @@ phph = function() {
         t0 = proc.time()
         
         # get pleasant colors
-        red = ezplot::palette("red")
-        blue = ezplot::palette("blue")
-        purple = ezplot::palette("purple")
+        red = ezplot::cb_color("vermilion")
+        blue = ezplot::cb_color("blue")
+        purple = ezplot::cb_color("reddish_purple")
         
         # run phph model
         phph = nltm::nltm(survival::Surv(TTOBRC, STATUS)~RT, data=dat, 

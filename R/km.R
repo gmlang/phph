@@ -6,8 +6,8 @@ km = function() {
         t0 = proc.time()
         
         # get pleasant colors
-        red = ezplot::palette("red")
-        blue = ezplot::palette("blue")
+        red = ezplot::cb_color("vermilion")
+        blue = ezplot::cb_color("blue")
         
         # generate KM plot
         km = survival::survfit(survival::Surv(TTOBRC, STATUS) ~ RT, data=dat, 
